@@ -1,5 +1,9 @@
+from quiz.quiz import Quiz
+
+
 def main():
-    print('Hello, World')
+    quiz = Quiz()
+    quiz.start()
 
 
 if __name__ == '__main__':

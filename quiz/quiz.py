@@ -1,4 +1,11 @@
-from open_trivia_handler import OpenTriviaHandler
+from quiz.open_trivia_handler import OpenTriviaHandler
+import time
+import os
+
+
+def clear(secs=0):
+    time.sleep(secs)
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 class Quiz: 
@@ -17,6 +24,7 @@ class Quiz:
         self.current_question = self.questions[self.progress]
     
     def start(self):
+        clear()
         while self.progress != len(self.questions)-1:
             guess = input(
                 f'Q.{self.progress+1}: {self.current_question.text} (True/False): '
@@ -31,14 +39,13 @@ class Quiz:
             print(f'The correct answer was: {self.current_question.answer}')
             print(f'The current score is: {self.score}/{self.progress+1}')
             self.next_question()
+            clear(1)
         else:
             print(f'Your final score is: {self.score}/{self.progress+1}')
             play_again = input('Would you like to play again (\'y\' or \'n\'): ').lower()
             if play_again == 'y':
                 self.reset()
+                self.start()
             else:
+                clear()
                 print('Thanks for playing')
-
-
-quiz = Quiz()
-quiz.start()
