@@ -1,6 +1,6 @@
 import requests
 import html
-from question import Question
+from quiz.question import Question
 
 
 class OpenTriviaHandler:
