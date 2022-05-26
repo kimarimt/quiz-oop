@@ -1,6 +1,6 @@
 import requests
 import html
-from quiz.question import Question
+from question import Question
 
 
 class OpenTriviaHandler:
@@ -8,7 +8,6 @@ class OpenTriviaHandler:
 
     def __init__(self):
         self.questions = []
-        self.fetch_questions()
 
     def fetch_questions(self):
         response = requests.get(url=self.questions_url)
@@ -20,3 +19,5 @@ class OpenTriviaHandler:
                 answer=result['correct_answer'],
             )
             self.questions.append(question)
+
+        return self.questions
